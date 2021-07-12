@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import PPPhotoAuthorisationTool
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        RRDeviceAuthorizationTools.deviceAuthorization(true, .photo) { type, status in
+            if status == .authorized {
+                print("~~~~获得相册权限")
+            }
+            else {
+                print("~~~~")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
